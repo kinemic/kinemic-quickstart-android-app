@@ -8,8 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import de.kinemic.gesture.ConnectionReason;
-import de.kinemic.gesture.ConnectionState;
 import de.kinemic.gesture.Engine;
 import de.kinemic.gesture.Gesture;
 import de.kinemic.gesture.OnConnectionStateChangeListener;
@@ -21,12 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Engine mEngine;
 
-    private OnConnectionStateChangeListener mConnectionStateListener = new OnConnectionStateChangeListener() {
-        @Override
-        public void onConnectionStateChanged(final @NonNull ConnectionState state, final @NonNull ConnectionReason reason) {
-            // show a message on screen when connection state changes
-            Toast.makeText(MainActivity.this, state.toString() + " (" + reason.toString() + ")", Toast.LENGTH_SHORT).show();
-        }
+    private OnConnectionStateChangeListener mConnectionStateListener = (state, reason) -> {
+        // show a message on screen when connection state changes
+        Toast.makeText(MainActivity.this, state.toString() + " (" + reason.toString() + ")", Toast.LENGTH_SHORT).show();
     };
 
     private OnGestureListener mGestureListener = new OnGestureListener() {
@@ -36,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, gesture.toString(), Toast.LENGTH_SHORT).show();
 
             // give haptic feedback for every gesture
-            mEngine.buzz(300);
+            mEngine.vibrate(300);
         }
     };
 
