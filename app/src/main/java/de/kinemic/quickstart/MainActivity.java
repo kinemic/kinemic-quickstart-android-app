@@ -4,8 +4,10 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.widget.Toast;
 
 import de.kinemic.gesture.Engine;
@@ -42,8 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
         // coarse location permission is needed to scan for bluetooth devices
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+            String permissionToRequest = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) ?
+                    Manifest.permission.ACCESS_FINE_LOCATION :
+                    Manifest.permission.ACCESS_COARSE_LOCATION;
+            if (this.checkSelfPermission(permissionToRequest) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{permissionToRequest}, 1);
             }
         }
     }

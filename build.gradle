@@ -4,34 +4,24 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.7.3"
-        
+        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.9.7"
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+// used to find kinemic-sdk
 allprojects {
     repositories {
+        maven {url 'https://kinemic.jfrog.io/kinemic/gradle-release'}
+        maven {url 'https://kinemic.jfrog.io/kinemic/gradle-dev'}
         google()
         jcenter()
-        
-    }
-    apply plugin: "com.jfrog.artifactory"
-}
-
-artifactory {
-    contextUrl = "https://kinemic.jfrog.io/kinemic"
-    resolve {
-        repository {
-            repoKey = 'gradle-release'
-            maven = true
-
-        }
     }
 }
 
