@@ -1,6 +1,6 @@
 # Kinemic SDK Quickstart Android Application
 
-This repository contains the sample application from [Kinemic's quickstart guide](https://developer.kinemic.com/docs/android/latest/guides/quickstart.html), explaining the integration of the Kinemic SDK for gesture control into an android application.
+This repository contains the sample application from [Kinemic's quickstart guide](https://developer.kinemic.com/docs/android/latest/guides/quickstart/), explaining the integration of the Kinemic SDK for gesture control into an android application.
 For more information about the SDK and our solutions for gesture interaction visit us at: https://kinemic.com.
 
 ## Application
